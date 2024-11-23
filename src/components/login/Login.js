@@ -2,7 +2,7 @@
 import React,{ useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom';
+import { BrowserRouter, Link } from 'react-router-dom';
 
 const Login=()=>{
     const[emailInput,setEmailInput]=useState('');
@@ -23,6 +23,7 @@ const Login=()=>{
     }
 
     return(
+        <BrowserRouter>
         <div className='container mt-4'>
             <Form onSubmit={handleSubmit}>
                 <Form.Group controlId='emailInput'>
@@ -49,6 +50,7 @@ const Login=()=>{
                 <Link to="/signup" className="text-primary">Signup here</Link>
             </p>
         </div>
+        </BrowserRouter>
     )
 }
 
