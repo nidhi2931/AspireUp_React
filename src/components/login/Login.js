@@ -1,11 +1,14 @@
 
 import React,{ useState } from 'react';
 import {Container,Row,Col,Form,Button} from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Login =()=> {
     const[emailInput,setEmailInput]=useState('');
     const[passwordInput,setPasswordInput]=useState('');
+    const[error,setError] = useState('');
+    const navigate=useNavigate();
     
 
    const handleEmailInput=(e)=>{
@@ -16,10 +19,31 @@ const Login =()=> {
     setPasswordInput(e.target.value);
    }
 
-    const handleSubmit=(e)=>{
+    const handleSubmit= async(e)=>{
         e.preventDefault();
-        alert(`INput Value:${emailInput} and ${passwordInput}`);
-    }
+        setError('');
+        try{
+            const response= await axios.post('http://127.0.0.1:8000/api/login/',{
+                email:emailInput,
+                password:passwordInput,
+
+                
+            });
+            if (response.status===200){
+                navigate('/sidemenu');
+
+            }
+            else{
+                setError('Invalid username or password');
+            }
+
+        }
+        catch(err){
+            setError(err.response?.data?.message||'Something went wrong.Please try again.');
+
+        }
+        
+    };
 
     return(
        
@@ -31,7 +55,7 @@ const Login =()=> {
                         <Form.Group controlId='emailInput'>
                             <Form.Label>Email</Form.Label>
                                 <Form.Control
-                                type="email"
+                                type="text"
                                 placeholder="Enter Email"
                                 value={emailInput}
                                 onChange={handleEmailInput}
