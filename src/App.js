@@ -4,6 +4,8 @@ import Login from './components/login/Login';
 import Signup from  './components/signup/Signup';
 import SideMenu from './components/sidemenu/Sidemenu';
 import AddSubject from './components/AddSubject/AddSubject';
+import AddTopics from './components/AddTopics/AddTopics';
+import AddDocs from './components/AddDocs/AddDocs';
 
 function App() {
   return (
@@ -15,7 +17,8 @@ function App() {
             <Route path='/signup' element={<Signup />}/>
             <Route path='/sidemenu' element={<SideMenu />}/>
             <Route path='/addsubject' element={<AddSubject/>}/>
-
+            <Route path='/addtopics' element={<AddTopics/>}/>
+            <Route path='/adddocs' element={<AddDocs/>}/>
         </Routes>
     </Router>
       

@@ -30,7 +30,7 @@ const Login =()=> {
                 
             });
             if (response.status===200){
-                navigate('/sidemenu');
+                navigate('/addsubject');
 
             }
             else{
@@ -46,7 +46,6 @@ const Login =()=> {
     };
 
     return(
-       
         <Container className='mt-5'>
             <Row className='justify-content-md-center'>
                 <Col md={4}>
@@ -78,8 +77,7 @@ const Login =()=> {
                 </Col>
             </Row>
         </Container>
-        
-    )
+  )
 }
 
 export default Login;

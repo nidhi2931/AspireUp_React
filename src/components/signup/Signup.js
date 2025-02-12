@@ -19,10 +19,6 @@ const Signup=()=>{
             setFormData({...formData,[name]:value});
         };
 
-
-
-  
-
         const handleSignupSubmit =async(e)=>{
             e.preventDefault();
             setMessage(null);
